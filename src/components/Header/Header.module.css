@@ -1,0 +1,18 @@
+:root {
+  --header-height: 60px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: var(--header-height);
+  padding: 8px 10px;
+  border: 1px solid black;
+}
+
+.rightBox {
+  display: flex;
+  gap: 8px;
+}

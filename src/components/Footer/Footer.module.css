@@ -1,0 +1,8 @@
+:root {
+  --footer-height: 60px;
+}
+
+.footer {
+  height: var(--footer-height);
+  border: 1px solid black;
+}

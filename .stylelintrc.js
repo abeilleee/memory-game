@@ -3,5 +3,6 @@ export default {
   rules: {
     'block-no-empty': true,
     'no-empty-source': null,
+    'selector-class-pattern': null,
   },
 };
