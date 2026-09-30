@@ -77,4 +77,8 @@ export class BaseComponent {
       this.element.appendChild(child);
     });
   }
+
+  removeChildren() {
+    this.element.replaceChildren();
+  }
 }
