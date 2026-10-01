@@ -1,6 +1,7 @@
 import globals from 'globals';
 
 export default [
+  { ignores: ['dist/**'] },
   {
     files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
     languageOptions: {
@@ -10,6 +11,7 @@ export default [
     },
     rules: {
       'no-console': 'error',
+      'no-undef': 'error',
       'prefer-const': 'error',
       'no-case-declarations': 'error',
       'no-constant-condition': 'error',
@@ -22,6 +24,12 @@ export default [
           argsIgnorePattern: '^_',
         },
       ],
+    },
+  },
+  {
+    files: ['*.config.js'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 ];
