@@ -13,12 +13,11 @@
   color: var(--text-color-primary);
 
   background: var(--button-background-gradient);
-  box-shadow: var(--button-box-shadow);
+  box-shadow: var(--box-shadow);
 
   transition: all 0.3s ease;
 }
 
 .button:hover {
   filter: brightness(1.06);
-  box-shadow: var(--button-hover-box-shadow);
 }
