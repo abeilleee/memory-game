@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 40px;
+}
+
+.steps {
+  font-size: 28px;
+}

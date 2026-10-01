@@ -1,0 +1,53 @@
+.overlay {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: #00000068;
+  backdrop-filter: blur(2px);
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+
+  width: 500px;
+  max-width: 90vw;
+  min-height: 300px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: var(--background-gradient);
+  box-shadow: var(--box-shadow);
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buttonsBox {
+  display: flex;
+  gap: 8px;
+  align-self: flex-end;
+}
+
+.actionsBox {
+  display: flex;
+  gap: 8px;
+}

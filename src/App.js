@@ -2,6 +2,9 @@ import { BaseComponent } from '@/components/BaseComponent';
 import { Header } from '@/components/Header';
 import { GameField } from '@/components/GameField';
 import { Footer } from '@/components/Footer';
+import { Modal } from '@/components/Modal';
+import { WinContent } from '@/components/WinContent';
+import { Button } from '@/components/Button';
 
 /**
  * Root application class
@@ -39,9 +42,27 @@ export class App {
       onFinishGame: () => this.finishGame(),
     });
     new Footer({ parentElement: this.layout });
+    this.modal = new Modal();
   }
 
-  startNewGame() {}
+  startNewGame() {
+    this.gameField.resetGameField();
+    this.modal.close();
+  }
 
-  finishGame() {}
+  finishGame() {
+    this.modal.setContent({
+      contentElement: new WinContent({
+        stepsCount: this.gameField.stepsCount,
+      }).getElement(),
+      actions: [
+        new Button({
+          textContent: 'New game',
+          callback: () => this.startNewGame(),
+        }).getElement(),
+      ],
+    });
+
+    this.modal.open();
+  }
 }

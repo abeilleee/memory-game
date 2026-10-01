@@ -12,7 +12,7 @@
 
   color: var(--text-color-primary);
 
-  background: var(--button-background-gradient);
+  background: var(--background-gradient);
   box-shadow: var(--box-shadow);
 
   transition: all 0.3s ease;
