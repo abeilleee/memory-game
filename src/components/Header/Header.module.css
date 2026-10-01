@@ -1,5 +1,5 @@
 :root {
-  --header-height: 60px;
+  --header-height: 95px;
 }
 
 .header {
@@ -9,7 +9,11 @@
 
   height: var(--header-height);
   padding: 8px 10px;
-  border: 1px solid black;
+}
+
+.logo {
+  width: 100px;
+  height: 90px;
 }
 
 .rightBox {
