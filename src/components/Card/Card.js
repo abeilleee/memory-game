@@ -23,7 +23,7 @@ export class Card extends BaseComponent {
    * @param {string} [options.type] - Card type key (e.g. `'hat'`, `'teapot'`)
    */
   constructor(options = {}) {
-    super({ classNames: [styles.card], ...options });
+    super({ ...options, classNames: [styles.card, ...(options.classNames ?? [])] });
     this.type = options.type;
     this.isOpen = false;
 

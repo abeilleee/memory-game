@@ -1,11 +1,25 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  align-items: center;
+  justify-content: center;
+
   height: 100%;
-  border: 1px solid green;
+  padding: 10px;
 }
 
-.header {
+.countersBox {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  justify-content: center;
+
+  width: 300px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  box-shadow: var(--box-shadow);
 }
 
 .cardsGrid {
