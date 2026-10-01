@@ -15,7 +15,6 @@ export class Footer extends BaseComponent {
   buildFooter() {
     new BaseComponent({
       tagName: 'span',
-      classNames: [styles.copyright],
       textContent: '© 2026',
       parentElement: this.element,
     });
