@@ -2,6 +2,7 @@ import { BaseComponent } from '@/components/BaseComponent';
 import { Counter } from '@/components/Counter';
 import { Card } from '@/components/Card';
 import { shuffle } from '@/utils/shuffle';
+import { Storage } from '@/services/Storage';
 import { DOUBLE_CARDS_TYPES, MAX_PAIRS } from '@/constants';
 import styles from './GameField.module.css';
 
@@ -40,8 +41,8 @@ export class GameField extends BaseComponent {
   constructor(options) {
     super({
       tagName: 'div',
-      classNames: [styles.container],
       ...options,
+      classNames: [styles.container, ...(options.classNames ?? [])],
     });
 
     this.timerId = null;
@@ -188,7 +189,7 @@ export class GameField extends BaseComponent {
         this.isLocked = false;
 
         if (this.pairsCounter.counterValue === MAX_PAIRS) {
-          this.onFinishGame();
+          this.finishGame();
         }
       });
     }
@@ -203,12 +204,39 @@ export class GameField extends BaseComponent {
    * @returns {void}
    */
   resetGameField() {
-    this.isLocked = false;
     this.clearTimer();
     this.cardsMap.clear();
     this.openedCards.clear();
     this.shuffledCards = shuffle(DOUBLE_CARDS_TYPES);
     this.removeChildren();
     this.renderGameField();
+    this.shakeCards();
+    this.isLocked = false;
+  }
+
+  /**
+   * Set result to LS and calls onFinishGame callback
+   * @returns {void}
+   */
+  finishGame() {
+    Storage.addToState({
+      date: new Date().toISOString(),
+      steps: this.stepsCount,
+    });
+
+    this.onFinishGame();
+  }
+
+  /**
+   * Adds animation to the card grid
+   * @returns {void}
+   */
+  shakeCards() {
+    const grid = this.cardsGridContainer;
+    grid.classList.add(styles.shake);
+
+    grid.addEventListener('animationend', () => grid.classList.remove(styles.shake), {
+      once: true,
+    });
   }
 }

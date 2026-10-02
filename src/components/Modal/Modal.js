@@ -11,14 +11,18 @@ export class Modal extends BaseComponent {
   buttonsBox;
   /** @type {HTMLElement} */
   actionsBox;
+  /** @type {HTMLElement|null} */
+  inertTarget = null;
 
   constructor(options = {}) {
     super({
+      ...options,
       classNames: [styles.overlay],
       parentElement: options.parentElement ?? document.body,
       attributes: { 'data-role': 'modal-overlay' },
     });
 
+    this.inertTarget = options.inertTarget ?? null;
     this.buildShell();
     this.bindEvents();
   }
@@ -26,6 +30,7 @@ export class Modal extends BaseComponent {
   buildShell() {
     const modal = new BaseComponent({
       classNames: [styles.modal],
+      attributes: { 'aria-modal': 'true', role: 'dialog' },
       parentElement: this.element,
     }).getElement();
 
@@ -74,12 +79,19 @@ export class Modal extends BaseComponent {
     }
   };
 
-  open() {
+  open(content) {
+    this.setContent(content);
+
     if (this.isOpen) {
       return;
     }
 
     this.isOpen = true;
+
+    if (this.inertTarget) {
+      this.inertTarget.inert = true;
+    }
+
     this.element.classList.add(styles.active);
     document.body.classList.add('no-scroll');
   }
@@ -90,6 +102,11 @@ export class Modal extends BaseComponent {
     }
 
     this.isOpen = false;
+
+    if (this.inertTarget) {
+      this.inertTarget.inert = false;
+    }
+
     this.element.classList.remove(styles.active);
     document.body.classList.remove('no-scroll');
   }

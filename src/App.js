@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { Modal } from '@/components/Modal';
 import { WinContent } from '@/components/WinContent';
 import { Button } from '@/components/Button';
+import { Leaderboard } from '@/components/Leaderboard';
 
 /**
  * Root application class
@@ -31,6 +32,7 @@ export class App {
     this.header = new Header({
       parentElement: this.layout,
       onNewGame: () => this.startNewGame(),
+      onLeaderboard: () => this.onOpenLeaderboard(),
     });
     this.main = new BaseComponent({
       tagName: 'main',
@@ -39,10 +41,12 @@ export class App {
     }).getElement();
     this.gameField = new GameField({
       parentElement: this.main,
-      onFinishGame: () => this.finishGame(),
+      onFinishGame: () => this.onFinishGame(),
     });
     new Footer({ parentElement: this.layout });
-    this.modal = new Modal();
+    this.modal = new Modal({
+      inertTarget: this.layout,
+    });
   }
 
   startNewGame() {
@@ -50,8 +54,16 @@ export class App {
     this.modal.close();
   }
 
-  finishGame() {
-    this.modal.setContent({
+  onFinishGame() {
+    this.modal.open(this.createModalWinContent());
+  }
+
+  onOpenLeaderboard() {
+    this.modal.open(this.createModalLeaderboardContent());
+  }
+
+  createModalWinContent() {
+    return {
       contentElement: new WinContent({
         stepsCount: this.gameField.stepsCount,
       }).getElement(),
@@ -61,8 +73,12 @@ export class App {
           callback: () => this.startNewGame(),
         }).getElement(),
       ],
-    });
+    };
+  }
 
-    this.modal.open();
+  createModalLeaderboardContent() {
+    return {
+      contentElement: new Leaderboard().getElement(),
+    };
   }
 }

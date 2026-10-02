@@ -11,3 +11,4 @@ export const CARDS_MAP = {
 };
 export const DOUBLE_CARDS_TYPES = [...CARDS_TYPES, ...CARDS_TYPES];
 export const MAX_PAIRS = 8;
+export const MAX_RESULTS = 10;
