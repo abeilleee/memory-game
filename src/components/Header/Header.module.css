@@ -9,6 +9,12 @@
 
   height: var(--header-height);
   padding: 8px 10px;
+
+  @media screen and (width <= 600px) {
+    button {
+      padding: 8px;
+    }
+  }
 }
 
 .logo {
