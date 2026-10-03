@@ -1,0 +1,84 @@
+.card {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 8 / 7;
+  width: 100%;
+  min-width: 0;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.inner {
+  position: relative;
+  transform-style: preserve-3d;
+
+  width: 100%;
+  height: 100%;
+
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Flip */
+.card[data-opened='true'] .inner {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: 0 4px 4px #0002;
+}
+
+/* Back side */
+.back {
+  background-image: url('/cards/pattern.jpeg');
+  background-size: cover;
+}
+
+/* Front side */
+.front {
+  transform: rotateY(180deg);
+  background-color: #ffc0cb38;
+}
+
+.card[data-matched='true'] {
+  pointer-events: none;
+  cursor: default;
+}
+
+.card[data-matched='true'] .front,
+.card[data-matched='true'] .back {
+  box-shadow:
+    0 0 0 3px var(--card-match-accent),
+    0 0 22px 2px var(--card-match-glow);
+  animation: matched-pop 0.45s ease-out;
+}
+
+@keyframes matched-pop {
+  0%,
+  100% {
+    scale: 1;
+  }
+
+  40% {
+    scale: 1.08;
+  }
+}

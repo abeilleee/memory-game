@@ -1,0 +1,38 @@
+{
+  "name": "memory-game",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "format:fix": "prettier --write .",
+    "stylelint": "stylelint '**/*.css'",
+    "stylelint:fix": "stylelint '**/*.css' --fix",
+    "commitlint": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "eslint": "^10.11.0",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.9",
+    "stylelint": "^17.15.0",
+    "stylelint-config-clean-order": "^10.0.0",
+    "stylelint-config-standard": "^40.0.0",
+    "vite": "^8.3.0"
+  },
+  "lint-staged": {
+    "*.{css,scss}": "stylelint --fix",
+    "*.{ts,js,tsx,jsx}": "eslint --fix",
+    "*.{ts,js,tsx,jsx,json,scss,css,md}": "prettier --write"
+  }
+}

@@ -1,0 +1,28 @@
+:root {
+  --header-height: 95px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: var(--header-height);
+  padding: 8px 10px;
+
+  @media screen and (width <= 600px) {
+    button {
+      padding: 8px;
+    }
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 90px;
+}
+
+.rightBox {
+  display: flex;
+  gap: 8px;
+}

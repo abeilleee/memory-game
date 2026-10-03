@@ -1,0 +1,25 @@
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  color: var(--text-color-primary);
+
+  background: var(--background-gradient);
+  box-shadow: var(--box-shadow);
+
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    filter: brightness(1.06);
+  }
+}
