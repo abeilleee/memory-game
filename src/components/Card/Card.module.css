@@ -48,7 +48,7 @@
 
 /* Back side */
 .back {
-  background-image: url('cards/pattern.jpeg');
+  background-image: url('/cards/pattern.jpeg');
   background-size: cover;
 }
 

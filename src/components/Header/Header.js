@@ -35,7 +35,7 @@ export class Header extends BaseComponent {
     new BaseComponent({
       tagName: 'img',
       parentElement: this.element,
-      attributes: { src: '/logo.png', alt: 'logo' },
+      attributes: { src: 'logo.png', alt: 'logo' },
       classNames: [styles.logo],
     });
 
