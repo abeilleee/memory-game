@@ -80,7 +80,7 @@ export class Leaderboard extends BaseComponent {
           new BaseComponent({ tagName: 'td', textContent: `${steps}` }).getElement(),
           new BaseComponent({
             tagName: 'td',
-            textContent: `${new Date(date).toLocaleDateString()}`,
+            textContent: `${new Date(date).toLocaleDateString('ru-RU')}`,
           }).getElement(),
         ],
       }).getElement()
